@@ -1,0 +1,9 @@
+GET http://localhost:4111/eventos   
+###
+POST http://localhost:4111/eventos
+Content-Type: application/json
+
+{
+    "name":  "Jonathan",
+    "subscribedToChannel": "Hallo"
+}
