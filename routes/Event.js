@@ -1,75 +1,69 @@
 const express = require('express')
 const router = express.Router()
-const Subscriber = require('../models/Event')
+const Event = require('../models/Event')
 
 // Getting all
 router.get('/', async (req, res) => {
   try {
-    const subscribers = await Subscriber.find()
-    res.json(subscribers)
+    const events = await Event.find()
+    res.json(events)
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
 })
 
 // Getting One
-router.get('/:id', getSubscriber, (req, res) => {
-  res.json(res.subscriber)
+router.get('/:id', getEvent, (req, res) => {
+  res.json(res.event)
 })
 
 // Creating one
 router.post('/', async (req, res) => {
   console.log(req.body)
-  const subscriber = new Subscriber({
-    name: req.body.name,
-    subscribedToChannel: req.body.subscribedToChannel
-  })
+  const event = new Event(req.body)
   try {
-    const newSubscriber = await subscriber.save()
-    res.status(201).json(newSubscriber)
+    const newEvent = await event.save()
+    res.status(201).json(newEvent)
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
 })
 
 // Updating One
-router.patch('/:id', getSubscriber, async (req, res) => {
-  if (req.body.name != null) {
-    res.subscriber.name = req.body.name
-  }
-  if (req.body.subscribedToChannel != null) {
-    res.subscriber.subscribedToChannel = req.body.subscribedToChannel
+router.patch('/:id', getEvent, async (req, res) => {
+  for(var prop in req.body){
+    res.event[prop] = req.body[prop]
   }
   try {
-    const updatedSubscriber = await res.subscriber.save()
-    res.json(updatedSubscriber)
+    const updatedEvent = await res.event.save()
+    res.json(updatedEvent)
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
 })
 
 // Deleting One
-router.delete('/:id', getSubscriber, async (req, res) => {
+router.delete('/:id', getEvent, async (req, res) => {
   try {
-    await res.subscriber.remove()
-    res.json({ message: 'Deleted Subscriber' })
+    await res.event.remove()
+    res.json({ message: 'Deleted Event' })
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
 })
 
-async function getSubscriber(req, res, next) {
-  let subscriber
+async function getEvent(req, res, next) {
+  let event
   try {
-    subscriber = await Subscriber.findById(req.params.id)
-    if (subscriber == null) {
-      return res.status(404).json({ message: 'Cannot find subscriber' })
+    event = await Event.findById(req.params.id)
+    if (event == null) {
+      return res.status(404).json({ message: 'Cannot find event' })
     }
   } catch (err) {
     return res.status(500).json({ message: err.message })
   }
 
-  res.subscriber = subscriber
+  res.event = event
   next()
 }
 

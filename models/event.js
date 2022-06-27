@@ -5,14 +5,27 @@ const subscriberSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  subscribedToChannel: {
-    type: String,
+  creator:{
+    type: Number,
     required: true
   },
-  subscribeDate: {
+  start: {
     type: Date,
     required: true,
     default: Date.now
+  },
+  end: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  localization:{
+    type: Map,
+    required: true
+  },
+  description:{
+    type: String,
+    required: true
   }
 })
 
