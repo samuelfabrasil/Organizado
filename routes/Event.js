@@ -2,8 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Event = require('../models/Event')
 
+router.get('/', (req, res) => {
+  res.render("event", {});
+})
 // Getting all
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
   try {
     const events = await Event.find()
     res.json(events)
