@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+var path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const session = require('express-session');

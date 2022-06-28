@@ -1,16 +1,75 @@
-<%- include('layout.ejs'); %>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <style>
+    body {
+        background-image: url("../images/Fundo.png");
+        background-color: #3C2B2B;
+    }
+    .container{
+        position:absolute;
+        left: 50%;
+        top:30%;
+        transform: translateX(-50%) translateY(-30%);
+        border-radius: 10%;
+        width: 40%;
+        height: 90%;
+        background: #454545;
+    }
+    h1{
+        color: white;
+        font-family: 'Kdam Thmor Pro', sans-serif;
+        margin-left: 36%;
+    }
+    .form-control{
+        margin-left: 15%;
+        margin-top: 5%;
+        margin-bottom:3%;
+        width: 70%;
+        height: 8%;
+        background-color: rgba(196, 196, 196,0.4);
+        color: white;
+        border: 0px;
+        border-radius: 5px;
+        font-family: 'Kdam Thmor Pro', sans-serif;
+    }
+    .login-button{
+        background-color: #F02E2E;
+        width: 20%;
+        height: 10%;
+        color: #FFFFFF;
+        border: none;
+        font-family: 'Kdam Thmor Pro', sans-serif;
+        font-size:20px;
+        margin-left: 39%;
+        margin-top: 5%;
+        
+    }
+    .login-register a{
+        color: #FFFFFF;
+        font-family: 'Kdam Thmor Pro', sans-serif;
+        font-size:14px;
+    }
+    .login-register{
+        margin-left: 10%;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1; /* Firefox */
+    }
+    </style>
+</head>
 <div class="container">
 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <h2>NODE.JS MVC</h2>
+                        <h1>Register</h1>
                         <div class="card">
-                            <div class="card-header">Register</div>
                             <div class="card-body">
 
                                 <form class="form-horizontal" method="post" action="/register">
 
                                     <div class="form-group">
-                                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
@@ -19,7 +78,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
@@ -29,7 +87,6 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="password" class="cols-sm-2 control-label">Password</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -38,7 +95,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -50,7 +106,7 @@
                                         <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                                     </div>
                                     <div class="login-register">
-                                        <a href="/login">Login</a>
+                                        <a href="/login">Já tenho uma conta</a>
                                     </div>
                                 </form>
                             </div>
