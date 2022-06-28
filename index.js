@@ -34,7 +34,7 @@ app.use(passport.session());
 //Routes
 app.use("/", require("./routes/login"));
 app.use("/eventos", require("./routes/Event"));
-
+app.use("/publicacoes", require("./routes/Publication"));
 const PORT = process.env.PORT || 4111;
 
 app.listen(PORT, console.log("Server has started at port " + PORT));

@@ -19,8 +19,12 @@ const subscriberSchema = new mongoose.Schema({
     required: true,
     default: Date.now
   },
-  localization:{
-    type: Map,
+  latitude:{
+    type: Number,
+    required: true
+  },
+  longitude:{
+    type: Number,
     required: true
   },
   description:{

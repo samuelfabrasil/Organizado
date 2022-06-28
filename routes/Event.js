@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Event = require('../models/Event')
-
-router.get('/', (req, res) => {
+const { protectRoute } = require("../auth/protect");
+router.get('/', protectRoute, (req, res) => {
   res.render("event", {});
 })
 // Getting all
-router.get('/all', async (req, res) => {
+router.get('/all',protectRoute, async (req, res) => {
   try {
     const events = await Event.find()
     res.json(events)
@@ -16,13 +16,13 @@ router.get('/all', async (req, res) => {
 })
 
 // Getting One
-router.get('/:id', getEvent, (req, res) => {
+router.get('/:id',protectRoute, getEvent, (req, res) => {
   res.json(res.event)
 })
 
 // Creating one
-router.post('/', async (req, res) => {
-  console.log(req.body)
+router.post('/',protectRoute, async (req, res) => {
+  console.log(req.user)
   const event = new Event(req.body)
   try {
     const newEvent = await event.save()
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 })
 
 // Updating One
-router.patch('/:id', getEvent, async (req, res) => {
+router.patch('/:id',protectRoute, getEvent, async (req, res) => {
   for(var prop in req.body){
     res.event[prop] = req.body[prop]
   }
@@ -46,7 +46,7 @@ router.patch('/:id', getEvent, async (req, res) => {
 })
 
 // Deleting One
-router.delete('/:id', getEvent, async (req, res) => {
+router.delete('/:id', protectRoute ,getEvent, async (req, res) => {
   try {
     await res.event.remove()
     res.json({ message: 'Deleted Event' })
