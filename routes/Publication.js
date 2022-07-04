@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-router.get('/', (req, res) => {
+router.get('/', protectRoute, (req, res) => {
     Event.find({}, (err, items) => {
         if (err) {
             console.log(err);
@@ -32,13 +32,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', upload.single('image'), (req, res, next) => {
-  
+    console.log(req.file.filename)
     var obj = {
         title: req.body.title,
         subtitle:req.body.subtitle,
         texto:req.body.texto,
         img: {
-            data: fs.readFileSync(path.join('C:/Users/Samuel/Desktop/Organizado/uploads/' + req.file.filename)),
+            data: fs.readFileSync(path.join('C:/Users/Aluno/Desktop/Organizado/uploads/' + req.file.filename)),
             contentType: 'image/png'
         }
     }
@@ -48,7 +48,7 @@ router.post('/', upload.single('image'), (req, res, next) => {
         }
         else {
             // item.save();
-            res.redirect('/');
+            res.redirect('/publicacoes/');
         }
     });
 });

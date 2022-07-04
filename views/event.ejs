@@ -3,6 +3,26 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
     <style>
+        #menu{
+        position:absolute;
+        top:2%;
+        left: 68%;
+      }
+      #menu li{
+        margin-right: 10px;
+        display: inline;
+      }
+      #menu li a {
+        font-family: 'Kdam Thmor Pro', sans-serif;
+        color:white;
+        font-weight: bold;
+        font-size:16px;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      #menu li a:hover{
+        background-color: #e64545;
+      }
     header{
         background-color: #BF2626;
         height: 60px;
@@ -144,5 +164,12 @@
         </form>
         
     </div>
-
+    <ul id="menu">
+        <li>
+          <a href="/dashboard">INICIO</a>
+        </li>
+        <li>
+          <a href="/publicacoes">PUBLICAÇÕES</a>
+        </li>
+      </ul>
 </body>

@@ -5,7 +5,7 @@ const { dashboardView } = require("../controllers/dashboardController");
 
 const router = express.Router();
 
-router.get("/dashboard", protectRoute, dashboardView);
+router.get("/dashboard", dashboardView);
 
 router.get('/register', registerView);
 router.post('/register', registerUser);
